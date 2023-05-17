@@ -20,6 +20,7 @@ class _Demobuoi2State extends State<Demobuoi2> {
   Color colorBtn4 = Colors.red ;
   Color colorBtn5 = Colors.red ;
   Color colorBtn6 = Colors.red ;
+  int X = 0 ;
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
@@ -52,8 +53,17 @@ class _Demobuoi2State extends State<Demobuoi2> {
                 const Divider(
                   color: Colors.black12,
                   thickness: 1,
-                  indent: 150,
+                  indent: 100,
                 ) ,
+                Container( 
+                  alignment: Alignment.centerRight,
+                  padding: EdgeInsets.all(10),
+                  child: Text ( '$X',
+                  style: TextStyle(color: Colors.white60, fontSize: 20),
+                  ) , 
+                  
+                  
+                ),
                 Container(
                   alignment: Alignment.centerLeft,
                   padding: const EdgeInsets.all(10),
@@ -146,19 +156,30 @@ class _Demobuoi2State extends State<Demobuoi2> {
                 scrollDirection: Axis.vertical,
                 child: Column(
                   children: [
-                    BoxItem(
-                      nameBtn: nameBtn, 
+                    BoxItem(                       nameBtn: nameBtn, 
                       avatar:'https://www.blocworx.com/wp-content/uploads/2020/04/avataaars.png', name: 'Paul Gibert',
                       colorBtn: colorBtn,onPressed: (){
                         if (nameBtn == 'Follow') {
                       nameBtn = 'Unfollow'; 
                       colorBtn = Colors.white;
-                       setState(() {});
+                      setState(() { 
+                      });
                     } else {
                        nameBtn = 'Follow';
                       colorBtn = Colors.red;
                        setState(() {
-                      }); 
+                       });                  
+                     }
+                     if ( nameBtn == 'Follow' ){ 
+                      nameBtn = 'Follow' ;
+                      X = X - 1 ;
+                      setState(() {
+                      });
+                     } else {
+                      nameBtn = 'Unfollow';
+                      X = X + 1 ;
+                      setState(() {   
+                      });
                      }
                     },),
                     BoxItem(
@@ -174,6 +195,17 @@ class _Demobuoi2State extends State<Demobuoi2> {
                        setState(() {
                       }); 
                      }
+                     if ( nameBtn2 == 'Follow' ){ 
+                      nameBtn2 = 'Follow' ;
+                      X = X - 1 ;
+                      setState(() {
+                      });
+                     } else {
+                      nameBtn2 = 'Unfollow';
+                      X = X + 1 ;
+                      setState(() {
+                      });
+                     }
                     }, name: 'Michael McCormick', avatar: 'https://th.bing.com/th/id/OIP.FIZRjmQ6LiyJLV7MELmrLgHaHa?pid=ImgDet&rs=1'),
                     BoxItem(
                       nameBtn: nameBtn3,
@@ -187,6 +219,17 @@ class _Demobuoi2State extends State<Demobuoi2> {
                       colorBtn3 = Colors.red;
                        setState(() {
                       }); 
+                     }
+                     if ( nameBtn3 == 'Follow' ){ 
+                      nameBtn3 = 'Follow' ;
+                      X = X - 1 ;
+                      setState(() {
+                      });
+                     } else {
+                      nameBtn3 = 'Unfollow';
+                      X = X + 1 ;
+                      setState(() {
+                      });
                      }
                     }, name: 'Fraklin Guzman', avatar: 'https://i.pinimg.com/originals/26/44/4f/26444f66c8cfe2798e892a669e4df8cf.png'),
                     BoxItem(
@@ -202,6 +245,17 @@ class _Demobuoi2State extends State<Demobuoi2> {
                        setState(() {
                       }); 
                      }
+                     if ( nameBtn4 == 'Follow' ){ 
+                      nameBtn4 = 'Follow' ;
+                      X = X - 1 ;
+                      setState(() {
+                      });
+                     } else {
+                      nameBtn4 = 'Unfollow';
+                      X = X + 1 ;
+                      setState(() { 
+                      });
+                     }
                     }, name: 'Milton Ortiz', avatar: 'https://th.bing.com/th/id/OIP.IBxkYIoZvMTHNOtVPt6U5gHaGe?pid=ImgDet&rs=1'),
                     BoxItem(nameBtn: nameBtn5,
                     colorBtn: colorBtn5, onPressed: (){
@@ -214,6 +268,17 @@ class _Demobuoi2State extends State<Demobuoi2> {
                       colorBtn5 = Colors.red;
                        setState(() {
                       }); 
+                     }
+                     if ( nameBtn5 == 'Follow' ){ 
+                      nameBtn5 = 'Follow' ;
+                      X = X - 1 ;
+                      setState(() {
+                      });
+                     } else {
+                      nameBtn5 = 'Unfollow';
+                      X = X + 1 ;
+                      setState(() {
+                      });
                      }
                     }, name: 'Monkey D Luffy', avatar: 'https://th.bing.com/th/id/OIP.WfBqyPJNS5-Zseri8AEdvgHaHa?pid=ImgDet&rs=1'),
                     BoxItem(
@@ -228,6 +293,17 @@ class _Demobuoi2State extends State<Demobuoi2> {
                        setState(() {
                       }); 
                      }
+                     if ( nameBtn6 == 'Follow' ){ 
+                      nameBtn6 = 'Follow' ;
+                      X = X - 1 ;
+                      setState(() {
+                      });
+                     } else {
+                      nameBtn6 = 'Unfollow';
+                      X = X + 1 ;
+                      setState(() {
+                      });
+                     }
                     }, name: 'Steven Jobs', avatar: 'https://th.bing.com/th/id/OIP.DuRDsUccrpDNhwSg6BvpLwHaD5?pid=ImgDet&rs=1'),
                   ],
                 ),
@@ -236,12 +312,10 @@ class _Demobuoi2State extends State<Demobuoi2> {
           ), 
           ] 
         )
-        
       )
     );
   }
 }
-
 class BoxItem extends StatelessWidget {
   const  BoxItem({
     super.key,
@@ -249,7 +323,7 @@ class BoxItem extends StatelessWidget {
     required this.onPressed,
     required this.name,
     required this.avatar,
-    required this.nameBtn,  
+    required this.nameBtn,
   });
   final Color colorBtn;
   final void Function()? onPressed;
